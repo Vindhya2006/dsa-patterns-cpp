@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Remove duplicates from a sorted array
+// Returns the number of unique elements
+// Time Complexity: O(n)
+
+int removeDuplicates(vector<int>& nums)
+{
+    if(nums.size() == 0)
+        return 0;
+
+    int i = 0;
+
+    for(int j = 1; j < nums.size(); j++)
+    {
+        if(nums[i] != nums[j])
+        {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+
+    return i + 1;
+}
+
+int main()
+{
+    vector<int> nums = {1,1,2,2,3,4,4};
+
+    int k = removeDuplicates(nums);
+
+    cout << "Number of unique elements: " << k << endl;
+
+    cout << "Array after removing duplicates: ";
+    for(int i = 0; i < k; i++)
+        cout << nums[i] << " ";
+
+    return 0;
+}
